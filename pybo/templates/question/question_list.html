@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-4">
+
+  <!-- 상단 영역: 등록 버튼 + 검색 + 정렬 -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <a href="{{ url_for('question.create') }}" class="btn btn-primary">질문 등록하기</a>
+
+    <form class="d-flex align-items-center" id="searchForm" method="get" action="{{ url_for('question._list') }}">
+      <input type="text" id="search_kw" name="kw" value="{{ kw or '' }}" class="form-control me-2"
+        style="min-width: 240px;" placeholder="검색어 입력">
+      <button class="btn btn-outline-success me-2" id="btn_search" style="min-width: 60px;" type="button">검색</button>
+
+      <!-- 정렬 필터 -->
+
+
+      <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+  </div>
+
+  <!-- 질문 목록 카드 -->
+  {% if question_list.items %}
+  {% for question in question_list.items %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <a href="{{ url_for('question.detail', question_id=question.id) }}"
+        class="h5 fw-semibold text-decoration-none question-title">
+        {{ question.subject }}
+      </a>
+      {% if question.answer_set|length > 0 %}
+      <span class="badge bg-success ms-2">{{ question.answer_set|length }}</span>
+      {% endif %}
+      <div class="mt-2 small text-muted">
+        <span class="me-3">작성자: {{ question.user.username }}</span>
+        <span>작성일: {{ question.create_date|datetime }}</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="text-muted">등록된 질문이 없습니다.</p>
+  {% endif %}
+
+  <!-- 페이징 -->
+  <nav>
+    <ul class="pagination justify-content-center mt-4">
+      {% if question_list.has_prev %}
+      <li class="page-item">
+        <a class="page-link" data-page="{{ question_list.prev_num }}" href="javascript:void(0)">이전</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">이전</span></li>
+      {% endif %}
+
+      {% for page_num in question_list.iter_pages() %}
+      {% if page_num %}
+      {% if page_num == question_list.page %}
+      <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+      {% else %}
+      <li class="page-item">
+        <a class="page-link" data-page="{{ page_num }}" href="javascript:void(0)">{{ page_num }}</a>
+      </li>
+      {% endif %}
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">…</span></li>
+      {% endif %}
+      {% endfor %}
+
+      {% if question_list.has_next %}
+      <li class="page-item">
+        <a class="page-link" data-page="{{ question_list.next_num }}" href="javascript:void(0)">다음</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled"><span class="page-link">다음</span></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+  // 페이지 번호 클릭 시
+  const page_elements = document.getElementsByClassName("page-link");
+  Array.from(page_elements).forEach(function (element) {
+    element.addEventListener('click', function () {
+      if (this.dataset.page) {
+        document.getElementById('page').value = this.dataset.page;
+        document.getElementById('searchForm').submit();
+      }
+    });
+  });
+
+  // 검색 버튼 클릭 시
+  const btn_search = document.getElementById("btn_search");
+  if (btn_search) {
+    btn_search.addEventListener('click', function () {
+      document.getElementById('page').value = 1;
+      document.getElementById('searchForm').submit();
+    });
+  }
+</script>
+{% endblock %}

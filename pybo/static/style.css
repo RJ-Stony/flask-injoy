@@ -1,0 +1,163 @@
+:root {
+  --velog-green: #20c997;
+  --velog-green-hover: #1cb38a;
+}
+
+/* 기본 설정 */
+body {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  font-size: 16px;
+  line-height: 1.7;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* 링크 */
+a {
+  color: #212529;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--velog-green);
+}
+
+/* 카드 */
+.card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 1.25rem;
+  background-color: #ffffff;
+  transition: background-color 0.4s ease, color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* 버튼 */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+  padding: 0.45rem 1rem;
+}
+.btn-primary {
+  background-color: var(--velog-green);
+  border-color: var(--velog-green);
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: var(--velog-green-hover);
+  border-color: var(--velog-green-hover);
+}
+.btn-outline-success {
+  border-color: var(--velog-green);
+  color: var(--velog-green);
+}
+.btn-outline-success:hover {
+  background-color: var(--velog-green);
+  color: white;
+}
+
+/* 입력폼 */
+.form-control {
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+}
+.form-control:focus {
+  border-color: var(--velog-green);
+  box-shadow: none;
+}
+
+/* 뱃지 */
+.badge {
+  border-radius: 6px;
+  font-size: 0.9rem;
+  padding: 0.4em 0.6em;
+}
+
+/* 페이징 */
+.pagination .page-item .page-link {
+  border-radius: 6px;
+  margin: 0 4px;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+}
+.pagination .page-item.active .page-link {
+  background-color: var(--velog-green);
+  border-color: var(--velog-green);
+  color: white;
+}
+.pagination .page-link:hover {
+  background-color: #e9ecef;
+  color: #212529;
+}
+
+/* 다크 모드 설정 */
+[data-bs-theme="dark"] body {
+  background-color: #121212;
+  color: #f1f3f5;
+}
+[data-bs-theme="dark"] .card {
+  background-color: #212529;
+  color: #f8f9fa;
+  border: 1px solid #343a40;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+[data-bs-theme="dark"] .badge {
+  background-color: #198754;
+  color: #ffffff;
+}
+[data-bs-theme="dark"] .form-control {
+  background-color: #343a40;
+  color: #f8f9fa;
+  border-color: #495057;
+}
+[data-bs-theme="dark"] .form-control::placeholder {
+  color: #ced4da;
+}
+[data-bs-theme="dark"] .btn-outline-success {
+  border-color: var(--velog-green);
+  color: var(--velog-green);
+}
+[data-bs-theme="dark"] .btn-outline-success:hover {
+  background-color: var(--velog-green);
+  color: #fff;
+}
+[data-bs-theme="dark"] .pagination .page-link {
+  background-color: transparent;
+  border-color: #495057;
+  color: #dee2e6;
+}
+[data-bs-theme="dark"] .pagination .page-item.active .page-link {
+  background-color: var(--velog-green);
+  border-color: var(--velog-green);
+  color: white;
+}
+[data-bs-theme="dark"] .pagination .page-link:hover {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* 질문 카드와 텍스트 스타일 */
+[data-bs-theme="dark"] .question-card {
+  background-color: #212529;
+  color: #f8f9fa;
+}
+[data-bs-theme="light"] .question-card {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+[data-bs-theme="dark"] .question-title,
+[data-bs-theme="dark"] .question-content,
+[data-bs-theme="dark"] .answer-content {
+  color: #f1f3f5;
+}
+[data-bs-theme="light"] .question-title,
+[data-bs-theme="light"] .question-content,
+[data-bs-theme="light"] .answer-content {
+  color: #212529;
+}

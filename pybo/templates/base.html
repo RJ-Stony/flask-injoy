@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko" id="htmlRoot" data-bs-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pybo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  <div class="container py-4">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+  {% block script %}{% endblock %}
+
+  <!-- ✅ 다크모드 스크립트 -->
+  <script>
+    window.onload = function () {
+      const html = document.getElementById("htmlRoot");
+      const themeIcon = document.getElementById("themeIcon");
+      const toggleBtn = document.getElementById("themeToggle");
+      const navbar = document.getElementById("mainNavbar");
+
+      const savedTheme = localStorage.getItem("theme") || "dark";
+      html.setAttribute("data-bs-theme", savedTheme);
+      updateNavbarTheme(savedTheme);
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const currentTheme = html.getAttribute("data-bs-theme");
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
+          html.setAttribute("data-bs-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
+          updateNavbarTheme(newTheme);
+        });
+      }
+
+      function updateNavbarTheme(theme) {
+        if (!navbar) return;
+        navbar.classList.toggle("navbar-dark", theme === "dark");
+        navbar.classList.toggle("bg-dark", theme === "dark");
+        navbar.classList.toggle("navbar-light", theme === "light");
+        navbar.classList.toggle("bg-white", theme === "light");
+
+        document.querySelectorAll(".navbar .nav-link, .navbar .navbar-brand").forEach(el => {
+          el.classList.toggle("text-white", theme === "dark");
+          el.classList.toggle("text-body", theme === "light");
+        });
+
+        if (themeIcon) {
+          themeIcon.textContent = theme === "dark" ? "☀️" : "🌙";
+        }
+      }
+    };
+  </script>
+</body>
+
+</html>

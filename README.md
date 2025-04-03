@@ -5,6 +5,14 @@
 
 ---
 
+## 🖼️ 구현 예시
+
+![image](https://github.com/user-attachments/assets/2ee91486-fbd6-42e7-a7f7-129cefc52f57)
+![image](https://github.com/user-attachments/assets/3cb8570e-e54e-48a2-84d3-dabf29dc1a99)
+![image](https://github.com/user-attachments/assets/d7a492c7-6b3f-4634-8324-b33b793ce68f)
+
+---
+
 ## 🔑 주요 기능
 
 ### ✅ 사용자 관리
@@ -97,14 +105,6 @@ pip install -r requirements.txt
 # 애플리케이션 실행
 flask run
 ```
-
----
-
-## 🖼️ 구현 예시
-
-![image](https://github.com/user-attachments/assets/2ee91486-fbd6-42e7-a7f7-129cefc52f57)
-![image](https://github.com/user-attachments/assets/3cb8570e-e54e-48a2-84d3-dabf29dc1a99)
-![image](https://github.com/user-attachments/assets/d7a492c7-6b3f-4634-8324-b33b793ce68f)
 
 
 

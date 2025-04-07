@@ -43,3 +43,5 @@ def create_app():
     app.jinja_env.filters['datetime'] = format_datetime
 
     return app  # Flask 애플리케이션 객체를 반환
+
+app = create_app()  # Flask 애플리케이션 객체 생성

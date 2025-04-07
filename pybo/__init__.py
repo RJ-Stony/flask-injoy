@@ -3,8 +3,6 @@ from flask_migrate import Migrate  # Migrate: 데이터베이스 마이그레이
 from flask_sqlalchemy import SQLAlchemy # SQLAlchemy: Flask와 함께 사용할 수 있는 ORM(Object Relational Mapping) 라이브러리
 from sqlalchemy import MetaData # MetaData: SQLAlchemy에서 데이터베이스 메타데이터를 정의하는 클래스
 
-import config   # config.py: Flask 애플리케이션의 설정을 포함하는 모듈
-
 naming_convention = {
     "ix": 'ix_%(column_0_label)s',
     "uq": "uq_%(table_name)s_%(column_0_name)s",
@@ -21,7 +19,7 @@ flask db upgrade	모델의 변경 내용을 실제 데이터베이스에 적용�
 
 def create_app():
     app = Flask(__name__)   # Flask 애플리케이션 객체 생성
-    app.config.from_object(config)  # config.py에서 설정을 불러옴
+    app.config.from_envvar('APP_CONFIG_FILE')  # 환경 변수에서 설정 파일 경로를 가져와서 Flask 애플리케이션에 설정을 로드
 
     # ORM
     db.init_app(app)    # SQLAlchemy 객체를 Flask 애플리케이션에 연결

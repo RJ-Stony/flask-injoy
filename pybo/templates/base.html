@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko" id="htmlRoot" data-bs-theme="dark">
+<html lang="ko" id="htmlRoot" data-bs-theme="light">
 
 <head>
   <meta charset="utf-8">
@@ -7,6 +7,15 @@
   <title>InJoy</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- 테마 깜빡임 방지를 위한 인라인 스크립트 -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-bs-theme", savedTheme);
+      }
+    })();
+  </script>
 </head>
 
 <body>
@@ -19,15 +28,15 @@
 
   {% block script %}{% endblock %}
 
-  <!-- ✅ 다크모드 스크립트 -->
+  <!-- 다크모드 스크립트 -->
   <script>
-    window.onload = function () {
+    document.addEventListener("DOMContentLoaded", function () {
       const html = document.getElementById("htmlRoot");
       const themeIcon = document.getElementById("themeIcon");
       const toggleBtn = document.getElementById("themeToggle");
       const navbar = document.getElementById("mainNavbar");
 
-      const savedTheme = localStorage.getItem("theme") || "dark";
+      const savedTheme = localStorage.getItem("theme") || "light";
       html.setAttribute("data-bs-theme", savedTheme);
       updateNavbarTheme(savedTheme);
 
@@ -57,7 +66,7 @@
           themeIcon.textContent = theme === "dark" ? "☀️" : "🌙";
         }
       }
-    };
+    });
   </script>
 </body>
 

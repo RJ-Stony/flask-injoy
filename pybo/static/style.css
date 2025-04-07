@@ -3,7 +3,7 @@
   --velog-green-hover: #1cb38a;
 }
 
-/* 기본 설정 */
+/* 기본 설정 (라이트 모드 기본값) */
 body {
   font-family: "Pretendard", "Noto Sans KR", sans-serif;
   background-color: #f8f9fa;
@@ -95,6 +95,17 @@ a:hover {
   color: #212529;
 }
 
+/* 질문 카드와 텍스트 스타일 (라이트 모드 기본값) */
+.question-card {
+  background-color: #ffffff;
+  color: #212529;
+}
+.question-title,
+.question-content,
+.answer-content {
+  color: #212529;
+}
+
 /* 다크 모드 설정 */
 [data-bs-theme="dark"] body {
   background-color: #121212;
@@ -141,23 +152,13 @@ a:hover {
   color: #fff;
 }
 
-/* 질문 카드와 텍스트 스타일 */
+/* 다크 모드 질문 카드와 텍스트 스타일 */
 [data-bs-theme="dark"] .question-card {
   background-color: #212529;
   color: #f8f9fa;
 }
-[data-bs-theme="light"] .question-card {
-  background-color: #ffffff;
-  color: #212529;
-}
-
 [data-bs-theme="dark"] .question-title,
 [data-bs-theme="dark"] .question-content,
 [data-bs-theme="dark"] .answer-content {
   color: #f1f3f5;
-}
-[data-bs-theme="light"] .question-title,
-[data-bs-theme="light"] .question-content,
-[data-bs-theme="light"] .answer-content {
-  color: #212529;
 }

@@ -1,4 +1,4 @@
-from flask import Blueprint, url_for    # url_for: URL을 생성하는 함수, 주어진 뷰 함수의 URL을 생성
+from flask import Blueprint, url_for, current_app    # url_for: URL을 생성하는 함수, 주어진 뷰 함수의 URL을 생성
 from flask import render_template  # render_template: HTML 템플릿을 렌더링하는 함수
 from werkzeug.utils import redirect # redirect: URL로 리다이렉트하는 함수
 
@@ -11,5 +11,5 @@ bp = Blueprint('main', __name__, url_prefix='/')
 
 @bp.route('/')  # 메인 페이지
 def index():
-    3/0  # 0으로 나누기 예외 발생 (테스트용)
+    current_app.logger.info("INFO 레벨로 출력")
     return redirect(url_for('question._list'))  # 메인 페이지에서 질문 목록 페이지로 리다이렉트

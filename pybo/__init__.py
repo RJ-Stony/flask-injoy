@@ -1,4 +1,4 @@
-from flask import Flask     # Flask: Flask 웹 프레임워크의 핵심 클래스
+from flask import Flask, render_template     # Flask: Flask 웹 프레임워크의 핵심 클래스
 from flask_migrate import Migrate  # Migrate: 데이터베이스 마이그레이션을 위한 Flask 확장 모듈
 from flask_sqlalchemy import SQLAlchemy # SQLAlchemy: Flask와 함께 사용할 수 있는 ORM(Object Relational Mapping) 라이브러리
 from sqlalchemy import MetaData # MetaData: SQLAlchemy에서 데이터베이스 메타데이터를 정의하는 클래스
@@ -16,6 +16,9 @@ migrate = Migrate()
 flask db migrate	모델을 새로 생성하거나 변경할 때 사용 (실행하면 리비전 파일이 생성된다.)
 flask db upgrade	모델의 변경 내용을 실제 데이터베이스에 적용할 때 사용 (위에서 생성된 리비전 파일을 실행하여 데이터베이스를 변경한다.)
 '''
+
+def page_not_found(e):
+    return render_template('404.html'), 404  # 404 에러 페이지를 렌더링하는 함수
 
 def create_app():
     app = Flask(__name__)   # Flask 애플리케이션 객체 생성
@@ -41,6 +44,9 @@ def create_app():
     # 필터
     from .filter import format_datetime
     app.jinja_env.filters['datetime'] = format_datetime
+
+    # 오류페이지
+    app.register_error_handler(404, page_not_found)
 
     return app  # Flask 애플리케이션 객체를 반환
 

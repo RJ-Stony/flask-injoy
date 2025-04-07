@@ -74,6 +74,7 @@ a:hover {
   border-radius: 6px;
   font-size: 0.9rem;
   padding: 0.4em 0.6em;
+  background-color: rgb(235, 235, 235);
 }
 
 /* 페이징 */
@@ -104,6 +105,51 @@ a:hover {
 .question-content,
 .answer-content {
   color: #212529;
+}
+
+/* vote 버튼 영역 */
+.vote-box {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem; /* 버튼과 버튼 사이 여백 */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.vote-button {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #212529;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.vote-button:hover {
+  background-color: #e2e6ea;
+  border-color: #ced4da;
+}
+
+.vote-count {
+  background-color: #20c997;
+  color: white;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+.vote-button .icon-thumb {
+  width: 20px;
+  height: 20px;
 }
 
 /* 다크 모드 설정 */
@@ -161,4 +207,21 @@ a:hover {
 [data-bs-theme="dark"] .question-content,
 [data-bs-theme="dark"] .answer-content {
   color: #f1f3f5;
+}
+
+[data-bs-theme="dark"] .vote-button {
+  background-color: #2c2f33;
+  border-color: #444c56;
+  stroke: white;
+  color: #ffffff;
+}
+
+[data-bs-theme="dark"] .vote-button:hover {
+  background-color: #3a3f44;
+  border-color: #5a6268;
+}
+
+[data-bs-theme="dark"] .vote-count {
+  background-color: #20c997;
+  color: #ffffff;
 }

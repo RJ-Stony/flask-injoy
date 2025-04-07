@@ -33,6 +33,11 @@ a:hover {
     border-color 0.4s ease;
 }
 
+.card-answer {
+  border-color: var(--velog-green);
+  color: var(--velog-green);
+}
+
 /* 버튼 */
 .btn {
   border-radius: 6px;

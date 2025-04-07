@@ -28,7 +28,7 @@
         {{ question.subject }}
       </a>
       {% if question.answer_set|length > 0 %}
-      <span class="badge bg-success ms-2">{{ question.answer_set|length }}</span>
+      <span class="card-answer">{{ question.answer_set|length }}</span>
       {% endif %}
       <div class="mt-2 small text-muted">
         <span class="me-3">작성자: {{ question.user.username }}</span>

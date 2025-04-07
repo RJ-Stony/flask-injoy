@@ -10,5 +10,6 @@ bp = Blueprint('main', __name__, url_prefix='/')
 # url_prefix: Blueprint가 담당하는 공통 URL 경로 접두어(prefix)
 
 @bp.route('/')  # 메인 페이지
-def index():    
+def index():
+    3/0  # 0으로 나누기 예외 발생 (테스트용)
     return redirect(url_for('question._list'))  # 메인 페이지에서 질문 목록 페이지로 리다이렉트
